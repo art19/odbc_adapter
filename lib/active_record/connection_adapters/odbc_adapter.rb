@@ -31,7 +31,7 @@ module ActiveRecord
           end
 
         database_metadata = ::ODBCAdapter::DatabaseMetadata.new(connection)
-        database_metadata.adapter_class.new(connection, logger, database_metadata)
+        database_metadata.adapter_class.new(connection, logger, database_metadata, options)
       end
 
       private
@@ -83,10 +83,11 @@ module ActiveRecord
 
       attr_reader :database_metadata
 
-      def initialize(connection, logger, database_metadata)
+      def initialize(connection, logger, database_metadata, options)
         super(connection, logger)
         @connection        = connection
         @database_metadata = database_metadata
+        @options           = options
       end
 
       # Returns the human-readable name of the adapter. Use mixed case - one
@@ -115,10 +116,10 @@ module ActiveRecord
       def reconnect!
         disconnect!
         @connection =
-          if options.key?(:dsn)
-            ODBC.connect(options[:dsn], options[:username], options[:password])
+          if @options.key?(:dsn)
+            ODBC.connect(@options[:dsn], @options[:username], @options[:password])
           else
-            ODBC::Database.new.drvconnect(options[:driver])
+            ODBC::Database.new.drvconnect(@options[:driver])
           end
         super
       end
