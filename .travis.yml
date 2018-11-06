@@ -22,7 +22,7 @@ matrix:
     - DB=postgresql
     - CONN_STR='DRIVER={PostgreSQL ANSI};SERVER=localhost;PORT=5432;DATABASE=odbc_test;UID=postgres;'
     addons:
-      postgresql: "10"
+      postgresql: "9.4"
       apt:
         packages:
         - unixodbc
@@ -46,7 +46,7 @@ matrix:
     - DB=postgresql
     - CONN_STR='DRIVER={PostgreSQL ANSI};SERVER=localhost;PORT=5432;DATABASE=odbc_test;UID=postgres;'
     addons:
-      postgresql: "10"
+      postgresql: "9.4"
       apt:
         packages:
         - unixodbc
