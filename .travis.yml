@@ -26,7 +26,7 @@ matrix:
         packages:
         - unixodbc
         - unixodbc-dev
-        - odbc-postgresql
+        - odbc-postgresql-09.06
   - rvm: 2.5.1
     env:
     - DB=mysql
@@ -50,5 +50,5 @@ matrix:
         packages:
         - unixodbc
         - unixodbc-dev
-        - odbc-postgresql
+        - odbc-postgresql-09.06
 before_script: bin/ci-setup
