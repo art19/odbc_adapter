@@ -1,4 +1,5 @@
 sudo: required
+dist: trusty
 language: ruby
 cache: bundler
 matrix:
@@ -21,12 +22,12 @@ matrix:
     - DB=postgresql
     - CONN_STR='DRIVER={PostgreSQL ANSI};SERVER=localhost;PORT=5432;DATABASE=odbc_test;UID=postgres;'
     addons:
-      postgresql: "9.2"
+      postgresql: "9.4"
       apt:
         packages:
         - unixodbc
         - unixodbc-dev
-        - odbc-postgresql-09.06
+        - odbc-postgresql
   - rvm: 2.5.1
     env:
     - DB=mysql
@@ -45,10 +46,10 @@ matrix:
     - DB=postgresql
     - CONN_STR='DRIVER={PostgreSQL ANSI};SERVER=localhost;PORT=5432;DATABASE=odbc_test;UID=postgres;'
     addons:
-      postgresql: "9.2"
+      postgresql: "9.4"
       apt:
         packages:
         - unixodbc
         - unixodbc-dev
-        - odbc-postgresql-09.06
+        - odbc-postgresql
 before_script: bin/ci-setup
