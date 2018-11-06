@@ -174,7 +174,10 @@ module ActiveRecord
 
         case
         when error_number == ERR_DUPLICATE_KEY_VALUE
-          ActiveRecord::RecordNotUnique.new(message, exception)
+          args = [message]
+          args << exception if ActiveRecord::RecordNotUnique.instance_method(:initialize).arity == 2
+
+          ActiveRecord::RecordNotUnique.new(*args)
         when error_number == ERR_QUERY_TIMED_OUT, exception.message =~ ERR_QUERY_TIMED_OUT_MESSAGE
           ::ODBCAdapter::QueryTimeoutError.new(message, exception)
         else
