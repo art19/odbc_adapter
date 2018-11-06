@@ -1,5 +1,5 @@
 sudo: required
-dist: artful
+dist: trusty
 language: ruby
 cache: bundler
 matrix:
