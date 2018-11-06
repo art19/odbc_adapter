@@ -48,7 +48,16 @@ ActiveRecord models that use this connection will now be connecting to the confi
 
 ## Testing
 
-To run the tests, you'll need the ODBC driver as well as the connection adapter for each database against which you're trying to test. Then run `DSN=MyDatabaseDSN bundle exec rake test` and the test suite will be run by connecting to your database.
+After checking out the repo, run `bin/setup` to install dependencies. Next, configure your system with a PostgreSQL data source called `ODBCAdapterPostgreSQLTest` (you can alternatively set the environment variables `CONN_STR` or `DSN`).
+i.e `CONN_STR='DRIVER=PostgreSQL;SERVER=localhost;PORT=5432;UID=username;PASSWORD=password;DATABASE=test;'`
+To run the tests, you'll need the ODBC driver installed on your machine. If you are using Postgres 9.x you need to make sure to have `psqlodbc 09.06`. If you are on OSX you can install it with the following:
+
+      $ brew tap art19/psqlodbc
+      $ brew install psqlodbc@09.06.0410
+      $ brew unlink psqlodbc # may fail if not already installed
+      $ brew link psqlodbc@09.06.0410
+
+Then run `DSN=MyDatabaseDSN bundle exec rake test` and the test suite will be run by connecting to your database.
 
 ## Contributing
 
