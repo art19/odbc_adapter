@@ -1,5 +1,5 @@
 sudo: required
-dist: trusty
+dist: precise
 language: ruby
 cache: bundler
 matrix:
@@ -27,7 +27,7 @@ matrix:
         packages:
         - unixodbc
         - unixodbc-dev
-        - odbc-postgresql
+        - odbc-postgresql=1:09.06.0200-1.pgdg12.4+1
   - rvm: 2.5.1
     env:
     - DB=mysql
@@ -51,5 +51,5 @@ matrix:
         packages:
         - unixodbc
         - unixodbc-dev
-        - odbc-postgresql
+        - odbc-postgresql=1:09.06.0200-1.pgdg12.4+1
 before_script: bin/ci-setup
